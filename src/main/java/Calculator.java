@@ -1,3 +1,5 @@
+import java.util.Random;
+import java.util.UUID;
 
 class Calculator {
 
@@ -18,6 +20,9 @@ class Calculator {
     }
 
     int divide(int a , int b){
+        if (b == 0) {
+            throw new ArithmeticException("/ by zero");
+        }
         return a / b;
     }
 
@@ -86,8 +91,10 @@ class Calculator {
     if you run this function twice with the same String input, it must return 2 unique String IDs
      */
     String createUniqueID(String n){
-
-        return null;
+        StringBuilder uniqueID = new StringBuilder(UUID.randomUUID().toString());
+        int random = new Random().nextInt(uniqueID.length());
+        uniqueID.insert(random, n);
+        return uniqueID.toString();
     }
 
 
